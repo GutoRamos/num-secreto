@@ -1,32 +1,45 @@
 alert('Bem Vindo ao jogo do Número Secreto!!!!');
-let numeroMaximo = 5000;
-let numeroSecreto = parseInt(Math.random() * numeroMaximo + 1)
-console.log(numeroSecreto);
-let cuhte;
-let tentativas= 1;
 
-// Enquanto i chute não for igual a número secreto
-while (cuhte != numeroSecreto){
-    cuhte =prompt('Escolha um número entre 1 e ' + numeroMaximo);
-// se chute for iguala ao numeroSecreto
-    if(cuhte == numeroSecreto){
-        break;
-        
-    } else{
-        if (cuhte > numeroSecreto){
-            alert('o número secreto é menor que ' + cuhte);
-        }else{
-            alert('o número secreto é maior que ' + cuhte);
+let numeroMaximo = 500000;
+let numeroSecreto = parseInt(Math.random() * numeroMaximo + 1);
+console.log(numeroSecreto);
+
+let cuhte;
+let tentativas = 0;  // Inicializa o contador de tentativas em 0
+
+// Loop principal do jogo
+while (cuhte != numeroSecreto) {
+    tentativas++;  // Incrementa o contador de tentativas
+    if (tentativas > 20) {
+        // Se exceder 20 tentativas, mostra mensagem de derrota e pergunta se deseja reiniciar
+        let reiniciar = confirm('Você excedeu o limite de 20 tentativas! Deseja reiniciar o jogo?');
+        if (reiniciar) {
+            // Reinicia o jogo
+            tentativas = 0;
+            numeroSecreto = parseInt(Math.random() * numeroMaximo + 1);
+            console.log(numeroSecreto);
+            continue;  // Reinicia o loop
+        } else {
+            // Se não quiser reiniciar, encerra o jogo
+            alert('O jogo acabou. O número secreto era: ' + numeroSecreto);
+            break;
         }
-        //tentativas = tentativas + 1;
-        tentativas++;
+    }
+
+    cuhte = prompt('Escolha um número entre 1 e ' + numeroMaximo);
+
+    if (cuhte == numeroSecreto) {
+        break;
+    } else {
+        if (cuhte > numeroSecreto) {
+            alert('O número secreto é menor que ' + cuhte);
+        } else {
+            alert('O número secreto é maior que ' + cuhte);
+        }
     }
 }
 
-let PalavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa'
-alert('isso ai! Voce descobriu que o número secreto era o ' + numeroSecreto + ' com ' + tentativas + '  ' + PalavraTentativa);
-//if(tentativas > 1){
-//    alert('isso ai! Voce descobriu que o número secreto era o ' + numeroSecreto + ' com ' + tentativas + ' tentativas');
-//} else{
-//    alert('isso ai! Voce descobriu que o número secreto era o ' + numeroSecreto + ' com ' + tentativas + ' tentativa');
-//}
+if (cuhte == numeroSecreto) {
+    let PalavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa';
+    alert('Isso aí! Você descobriu que o número secreto era o ' + numeroSecreto + ' com ' + tentativas + ' ' + PalavraTentativa);
+}
