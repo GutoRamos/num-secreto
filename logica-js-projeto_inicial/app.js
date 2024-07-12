@@ -1,6 +1,6 @@
 alert('Bem Vindo ao jogo do Número Secreto!!!!');
 
-let numeroMaximo = 500000;
+let numeroMaximo = 1000;
 let numeroSecreto = parseInt(Math.random() * numeroMaximo + 1);
 console.log(numeroSecreto);
 
@@ -43,3 +43,4 @@ if (cuhte == numeroSecreto) {
     let PalavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa';
     alert('Isso aí! Você descobriu que o número secreto era o ' + numeroSecreto + ' com ' + tentativas + ' ' + PalavraTentativa);
 }
+ 
